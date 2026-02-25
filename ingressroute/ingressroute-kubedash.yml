@@ -14,4 +14,5 @@ spec:
     - name: kubernetes-dashboard
       port: 443
       serversTransport: dashboard-transport
-  tls: {}
+  tls:
+    secretName: kube-lab-wildcard-tls

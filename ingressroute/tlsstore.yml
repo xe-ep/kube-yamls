@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: TLSStore
 metadata:
   name: default
-  namespace: traefik # MUST be in the same namespace as your Traefik pods
+  namespace: kube-system # MUST be in the same namespace as your Traefik pods
 spec:
   defaultCertificate:
     secretName: kube-lab-wildcard-tls

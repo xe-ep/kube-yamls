@@ -1,0 +1,15 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: minio-console
+  namespace: mlflow
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`minio.kube.lab`)
+      kind: Rule
+      services:
+        - name: mlflow-minio-console  # Use the specific console service
+          port: 9090                  # Match the port from your kubectl output
+  tls: {}

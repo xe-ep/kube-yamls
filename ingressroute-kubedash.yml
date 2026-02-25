@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  generation: 1
+  name: kubernetes-dash
+  namespace: kubernetes-dashboard
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`dash.kube.lab`)
+    services:
+    - name: kubernetes-dashboard
+      port: 443
+      serversTransport: dashboard-transport
+  tls: {}

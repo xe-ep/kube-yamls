@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  creationTimestamp: "2026-02-24T18:26:30Z"
+  generation: 1
+  name: traefik-dash
+  namespace: kube-system
+  resourceVersion: "9126720"
+  uid: 8f860f8c-ecbb-484d-880f-1ba7a7592a1e
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`traefik.kube.lab`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+    services:
+    - kind: TraefikService
+      name: api@internal
+  tls: {}

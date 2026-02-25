@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-kube-lab
+  namespace: traefik # Or kube-system, wherever Traefik is
+spec:
+  secretName: kube-lab-wildcard-tls
+  issuerRef:
+    name: kube-lab-issuer
+    kind: ClusterIssuer
+  commonName: "*.kube.lab"
+  dnsNames:
+    - "*.kube.lab"
+    - "kube.lab"
